@@ -7,8 +7,8 @@
 .sub main :main
 
   .param pmc argv
-  .local int affirm, ndx
-  .local string signat, course
+  .local int affirm, epoch, ndx
+  .local string signat, course, charte
 
   $I0 = elements argv
   $P0 = databank()
@@ -17,6 +17,7 @@
   null affirm
   signat = 'z'
   course = repeat '____ ', 12
+  epoch = time
 
   # begin layout
   print "\n"
@@ -30,9 +31,10 @@ LOOP:
   unless affirm goto MENU
 
   course = $P0[signat]
+  charte = ennead(signat, course, epoch)
 
   print "\n"
-  ennead(signat, course)
+  say charte
   print "\n"
 
   inc ndx

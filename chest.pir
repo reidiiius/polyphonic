@@ -93,7 +93,13 @@
 .sub ennead
   .param string signat
   .param string course
-  $S0 = course
+  .param string epoch
+  .local string diadem, temp
+
+  temp = concat signat, '-ennead-m'
+  diadem = concat temp, epoch
+
+  set $S0, course
   $S1 = peg_Bj($S0)
   $S2 = peg_Fn($S0)
   $S3 = peg_Cn($S0)
@@ -104,8 +110,8 @@
   $S8 = peg_Bn($S0)
   $S9 = peg_Fk($S0)
 
-  $P0 = new 'ResizablePMCArray'
-  push $P0, signat
+  new  $P0, 'ResizablePMCArray'
+  push $P0, diadem
   push $P0, $S1
   push $P0, $S2
   push $P0, $S3
@@ -116,9 +122,9 @@
   push $P0, $S8
   push $P0, $S9
 
-  $S10 = join "\n\t", $P0  
-  $S11 = "\t" . $S10
-  say $S11
+  set $S10, "\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s"
+  sprintf $S11, $S10, $P0
+  .return($S11)
 
 .end
 
