@@ -122,7 +122,7 @@
   push $P0, $S8
   push $P0, $S9
 
-  set $S10, "\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s\n\t%s"
+  $S10 = repeat "\n\t%s", 9
   sprintf $S11, $S10, $P0
   .return($S11)
 

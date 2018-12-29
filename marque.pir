@@ -7,44 +7,44 @@
 .sub main :main
 
   .param pmc argv
-  .local int affirm, epoch, ndx
+  .local int argc, affirm, epoch, ndx
   .local string signat, course, charte
 
-  $I0 = elements argv
+  argc = elements argv
   $P0 = databank()
 
-  ndx = 1
+  set ndx, 1
   null affirm
-  signat = 'z'
+  set signat, 'z'
   course = repeat '____ ', 12
   epoch = time
 
   # begin layout
   print "\n"
 
-  if $I0 < 2 goto MENU
+  if argc < 2 goto MENU
 
 LOOP:
-  signat = argv[ndx]
+  set signat, argv[ndx]
   affirm = exists $P0[signat]
 
   unless affirm goto MENU
 
-  course = $P0[signat]
+  set course, $P0[signat]
   charte = ennead(signat, course, epoch)
 
-  print "\n"
   say charte
   print "\n"
 
   inc ndx
-  if ndx < $I0 goto LOOP
+  if ndx < argc goto LOOP
 
   print "\n"
   goto TERM
 
 MENU:
-  $S0 = <<'TOC'
+  charte = <<'TOC'
+
 	j136y7	j167y2	j17	j17y2	j2	j23	j236
 	j23k6	j246y3	j26	j26y3	j26y34	j2k56	j2k56x4
 	j2k6	j2k6x5	j2k6y3	j2y3	j3	j34k6	j36
@@ -58,12 +58,10 @@ MENU:
 	k1j56y7	k1j6y7	k1j5	k5	j346y5	j3k5	j256
 	j25	j25y6	j2k34	j2k5	j56	j56y7	j5
 	j5y6	n0	n345y7	n25x6	n167	n67x2	n6x2
+
 TOC
 
-  $S1 = "\n" . $S0
-  say $S1
-
-  print "\n"
+  say charte
 
 TERM:
 
