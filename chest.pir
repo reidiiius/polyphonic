@@ -13,7 +13,7 @@
   .local string head, tail, druk
   head = substr qp, nu, 60
   tail = substr qp,  0, nu
-  druk = head . tail
+  druk = concat head, tail
   .return(druk)
 .end
 
@@ -122,7 +122,7 @@
   push $P0, $S8
   push $P0, $S9
 
-  $S10 = repeat "\n\t%s", 9
+  $S10 = repeat "\n\t%s", 10
   sprintf $S11, $S10, $P0
   .return($S11)
 
