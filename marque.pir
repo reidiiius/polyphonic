@@ -10,25 +10,25 @@
   .local int argc, affirm, epoch, ndx
   .local string signat, course, charte
 
-  argc = elements argv
+  elements argc, argv
   $P0 = databank()
 
   set ndx, 1
   null affirm
   set signat, 'z'
-  course = repeat '____ ', 12
+  repeat course, '____ ', 12
   epoch = time
 
   # begin layout
   print "\n"
 
-  if argc < 2 goto MENU
+  lt argc, 2, MENU
 
 LOOP:
   set signat, argv[ndx]
-  affirm = exists $P0[signat]
+  exists affirm, $P0[signat]
 
-  unless affirm goto MENU
+  unless affirm, MENU
 
   set course, $P0[signat]
   charte = ennead(signat, course, epoch)
@@ -37,7 +37,7 @@ LOOP:
   print "\n"
 
   inc ndx
-  if ndx < argc goto LOOP
+  lt ndx, argc, LOOP
 
   print "\n"
   goto TERM
@@ -64,6 +64,7 @@ TOC
   say charte
 
 TERM:
+  exit 0
 
 .end
 

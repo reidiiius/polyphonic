@@ -88,7 +88,7 @@
  $P0['k1j56y7']="____ u8xP yQt7 ____ o2v9 q4q4 v9o2 ____ t7yQ xzR8 ____ ____ "
  $P0['k2j56y7']="yQr5 ____ ____ q4zR v9v9 zRq4 t7o2 ____ r5yQ wNu8 ____ ____ "
 
-  $P1 = clone $P0
+  clone $P1, $P0
   .return($P1)
 
 .end

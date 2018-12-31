@@ -2,8 +2,7 @@
 
 
 .sub zilch
-  null $I0
-  .return($I0)
+  noop
 .end
 
 
@@ -11,9 +10,9 @@
   .param int nu
   .param string qp
   .local string head, tail, druk
-  head = substr qp, nu, 60
-  tail = substr qp,  0, nu
-  druk = concat head, tail
+  substr head, qp, nu
+  substr tail, qp,  0, nu
+  concat druk, head, tail
   .return(druk)
 .end
 
@@ -94,10 +93,10 @@
   .param string signat
   .param string course
   .param string epoch
-  .local string diadem, temp
+  .local string diadem, temple
 
-  temp = concat signat, '-ennead-m'
-  diadem = concat temp, epoch
+  concat temple, signat, '-ennead-m'
+  concat diadem, temple, epoch
 
   set $S0, course
   $S1 = peg_Bj($S0)
@@ -122,7 +121,8 @@
   push $P0, $S8
   push $P0, $S9
 
-  $S10 = repeat "\n\t%s", 10
+  elements $I0, $P0
+  repeat $S10, "\n\t%s", $I0
   sprintf $S11, $S10, $P0
   .return($S11)
 

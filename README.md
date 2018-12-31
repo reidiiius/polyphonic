@@ -12,6 +12,8 @@ Treasure maps
 ### Usage
 command line
 
+    cd polyphonic/
+
     parrot -w marque.pir
 
     parrot -w marque.pir n0
