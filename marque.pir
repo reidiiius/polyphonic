@@ -16,20 +16,20 @@
   set ndx, 1
   null affirm
   set signat, 'z'
+  set tuning, 'eadgbe'
   repeat course, '____ ', 12
   time epoch
 
   # begin layout
   print "\n"
 
-  lt argc, 2, MENU
+  lt argc, 2, menu
 
 LOOP:
   set signat, argv[ndx]
   exists affirm, $P0[signat]
-  unless affirm, MENU
+  unless affirm, menu
 
-  set tuning, 'ennead'
   set course, $P0[signat]
   charte = fabricate(signat, tuning, epoch, course)
 
@@ -40,9 +40,9 @@ LOOP:
   lt ndx, argc, LOOP
 
   print "\n"
-  goto TERM
+  goto conclude
 
-MENU:
+menu:
   charte = <<'TOC'
 
 	j136y7	j167y2	j17	j17y2	j2	j23	j236
@@ -63,8 +63,8 @@ TOC
 
   say charte
 
-TERM:
-  exit 0
+  conclude:
+    exit 0
 
 .end
 
