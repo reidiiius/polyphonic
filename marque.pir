@@ -15,7 +15,7 @@
 
   set ndx, 1
   null affirm
-  set signat, 'z'
+  set signat, argv[ndx]
   set tuning, 'eadgbe'
   repeat course, '____ ', 12
   time epoch
@@ -23,9 +23,10 @@
   # begin layout
   print "\n"
 
+  eq signat, 'clutch', roost
   lt argc, 2, menu
 
-LOOP:
+cycle:
   set signat, argv[ndx]
   exists affirm, $P0[signat]
   unless affirm, menu
@@ -37,8 +38,26 @@ LOOP:
   print "\n"
 
   inc ndx
-  lt ndx, argc, LOOP
+  lt ndx, argc, cycle
 
+  print "\n"
+  goto conclude
+
+roost:
+  iter $P1, $P0
+
+hatch:
+  unless $P1 goto perch
+
+  signat = shift $P1
+  set course, $P0[signat]
+  charte = fabricate(signat, tuning, epoch, course)
+
+  say charte
+  print "\n"
+  goto hatch
+
+perch:
   print "\n"
   goto conclude
 
@@ -63,8 +82,8 @@ TOC
 
   say charte
 
-  conclude:
-    exit 0
+conclude:
+  exit 0
 
 .end
 

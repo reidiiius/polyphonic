@@ -83,7 +83,7 @@
 .sub cgdae
   .param string qp
 
-  $S0 = '' # empty
+  null $S0
   $S1 = peg_En(qp)
   $S2 = peg_An(qp)
   $S3 = peg_Dn(qp)
@@ -106,7 +106,7 @@
 .sub eadgbe
   .param string qp
 
-  $S0 = '' #empty
+  null $S0
   $S1 = peg_En(qp)
   $S2 = peg_Bn(qp)
   $S3 = peg_Gn(qp)
@@ -130,7 +130,7 @@
 .sub ennead
   .param string qp
 
-  $S0 = '' # empty
+  null $S0
   $S1 = peg_Bj(qp)
   $S2 = peg_Fn(qp)
   $S3 = peg_Cn(qp)
@@ -170,7 +170,7 @@
   unless $I0, finish
   $P0 = $P1(course)
 
-  $S0  = signat . '-'
+  concat $S0, signat, '-'
   $S0 .= tuning
   $S0 .= '-m'
   $S0 .= epoch
@@ -181,9 +181,9 @@
   sprintf $S2, $S1, $P0
   .return($S2)
 
-  finish:
-    concat $S0, tuning, '?'
-    die $S0
+finish:
+  concat $S0, tuning, '?'
+  die $S0
 
 .end
 
