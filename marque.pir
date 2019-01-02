@@ -8,7 +8,7 @@
 
   .param pmc argv
   .local int argc, affirm, epoch, ndx
-  .local string signat, course, charte
+  .local string signat, tuning, course, charte
 
   elements argc, argv
   $P0 = databank()
@@ -17,7 +17,7 @@
   null affirm
   set signat, 'z'
   repeat course, '____ ', 12
-  epoch = time
+  time epoch
 
   # begin layout
   print "\n"
@@ -27,11 +27,11 @@
 LOOP:
   set signat, argv[ndx]
   exists affirm, $P0[signat]
-
   unless affirm, MENU
 
+  set tuning, 'ennead'
   set course, $P0[signat]
-  charte = ennead(signat, course, epoch)
+  charte = fabricate(signat, tuning, epoch, course)
 
   say charte
   print "\n"
