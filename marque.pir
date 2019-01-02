@@ -15,19 +15,18 @@
 
   set ndx, 1
   null affirm
-  set signat, argv[ndx]
+  null signat
   set tuning, 'eadgbe'
   repeat course, '____ ', 12
   time epoch
 
-  # begin layout
   print "\n"
 
-  eq signat, 'clutch', roost
   lt argc, 2, menu
+  set signat, argv[ndx]
+  eq  signat, 'clutch', roost
 
 cycle:
-  set signat, argv[ndx]
   exists affirm, $P0[signat]
   unless affirm, menu
 
@@ -38,10 +37,9 @@ cycle:
   print "\n"
 
   inc ndx
+  set signat, argv[ndx]
   lt ndx, argc, cycle
-
-  print "\n"
-  goto conclude
+  goto perch
 
 roost:
   iter $P1, $P0
@@ -56,10 +54,6 @@ hatch:
   say charte
   print "\n"
   goto hatch
-
-perch:
-  print "\n"
-  goto conclude
 
 menu:
   charte = <<'TOC'
@@ -77,12 +71,12 @@ menu:
 	k1j56y7	k1j6y7	k1j5	k5	j346y5	j3k5	j256
 	j25	j25y6	j2k34	j2k5	j56	j56y7	j5
 	j5y6	n0	n345y7	n25x6	n167	n67x2	n6x2
-
 TOC
 
   say charte
 
-conclude:
+perch:
+  print "\n"
   exit 0
 
 .end

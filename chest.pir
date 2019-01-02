@@ -80,6 +80,26 @@
 .end
 
 
+.sub bfbfb
+  .param string qp
+
+  null $S0
+  $S1 = peg_Bn(qp)
+  $S2 = peg_Fn(qp)
+
+  new $P0, 'FixedStringArray', 6
+  set $P0[0], $S0
+  set $P0[1], $S1
+  set $P0[2], $S2
+  set $P0[3], $S1
+  set $P0[4], $S2
+  set $P0[5], $S1
+
+  .return($P0)
+
+.end
+
+
 .sub cgdae
   .param string qp
 
@@ -97,6 +117,50 @@
   set $P0[3], $S3
   set $P0[4], $S4
   set $P0[5], $S5
+
+  .return($P0)
+
+.end
+
+
+.sub dadgad
+  .param string qp
+
+  null $S0
+  $S1 = peg_Dn(qp)
+  $S2 = peg_An(qp)
+  $S3 = peg_Gn(qp)
+
+  new $P0, 'FixedStringArray', 7
+  set $P0[0], $S0
+  set $P0[1], $S1
+  set $P0[2], $S2
+  set $P0[3], $S3
+  set $P0[4], $S1
+  set $P0[5], $S2
+  set $P0[6], $S1
+
+  .return($P0)
+
+.end
+
+
+.sub dgdgbd
+  .param string qp
+
+  null $S0
+  $S1 = peg_Dn(qp)
+  $S2 = peg_Bn(qp)
+  $S3 = peg_Gn(qp)
+
+  new $P0, 'FixedStringArray', 7
+  set $P0[0], $S0
+  set $P0[1], $S1
+  set $P0[2], $S2
+  set $P0[3], $S3
+  set $P0[4], $S1
+  set $P0[5], $S3
+  set $P0[6], $S1
 
   .return($P0)
 
@@ -152,6 +216,28 @@
   set $P0[7], $S7
   set $P0[8], $S8
   set $P0[9], $S9
+
+  .return($P0)
+
+.end
+
+
+.sub fkbjdn
+  .param string qp
+
+  null $S0
+  $S1 = peg_Dn(qp)
+  $S2 = peg_Bj(qp)
+  $S3 = peg_Fk(qp)
+
+  new $P0, 'FixedStringArray', 7
+  set $P0[0], $S0
+  set $P0[1], $S1
+  set $P0[2], $S2
+  set $P0[3], $S3
+  set $P0[4], $S1
+  set $P0[5], $S2
+  set $P0[6], $S3
 
   .return($P0)
 
