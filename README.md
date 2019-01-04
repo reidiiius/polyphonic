@@ -20,6 +20,8 @@ command line
 
     parrot -w marque.pir j6 k5
 
+    parrot -w marque.pir clutch | sensible-pager
+
 ---
 
 ### Distribution

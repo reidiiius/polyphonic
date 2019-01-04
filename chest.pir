@@ -1,5 +1,9 @@
 #!/usr/bin/parrot -w
 
+.include 'agate.pir'
+
+.namespace ['PolyHymnia']
+
 
 .sub zilch
   noop
@@ -251,9 +255,11 @@
   .param string course
 
   new $P0, 'ResizablePMCArray'
-  $P1 = get_global tuning
+  get_global $P1, tuning
   defined $I0, $P1
-  unless $I0, finish
+  unless $I0, conclude
+
+dasegno:
   $P0 = $P1(course)
 
   concat $S0, signat, '-'
@@ -267,9 +273,22 @@
   sprintf $S2, $S1, $P0
   .return($S2)
 
-finish:
-  concat $S0, tuning, '?'
-  die $S0
+conclude:
+  push_eh anomaly
+  new $P2, 'Exception'
+  throw $P2
+
+anomaly:
+  pop_eh
+
+  set tuning, 'ennead'
+  get_global $P1, tuning
+  defined $I2, $P1
+  if $I2, dasegno
+
+  concat $S3, tuning, '?'
+  concat $S3, "\t", $S3
+  say $S3
 
 .end
 

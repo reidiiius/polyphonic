@@ -1,10 +1,11 @@
 #!/usr/bin/parrot -w
 
-.include 'agate.pir'
 .include 'chest.pir'
 
+.namespace ['PolyHymnia']
 
-.sub main :main
+
+.sub atrium :main
 
   .param pmc argv
   .local int argc, affirm, epoch, ndx

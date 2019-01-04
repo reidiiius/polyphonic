@@ -1,5 +1,7 @@
 #!/usr/bin/parrot -w 
 
+.namespace ['PolyHymnia']
+
 
 .sub databank
 
